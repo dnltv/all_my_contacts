@@ -1,0 +1,36 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Title: {{ user.first_name }} {{ user.last_name }}</h1>
+
+  <p><strong>Id:</strong> <a href="">{{ user.id }}</a></p> <!-- author detail link not yet defined -->
+  <p><strong>Nickname:</strong> {{ user.nickname }}</p>
+  <p><strong>Date of Birth:</strong> {{ user.date_of_birth }}</p>
+  <p><strong>Description:</strong> {{ user.description }}</p>
+  <p><strong>Status:</strong></p>
+  <p class="{% if user.status == 'v' %}text-success{% elif user.status == 'h' %}text-danger{% else %}text-warning{% endif %}">{{ user.get_status_display }}</p>
+
+  <div style="margin-left:20px;margin-top:20px">
+      {% if user.status == 'v' %}
+      <h4>Social Media</h4>
+
+    {% for sm in user.socialmedia_set.all %}
+    <hr>
+      <p><strong>Instagram:</strong> <a>{{ sm.instagram }}</a></p>
+        {% if sm.instagram2 %}<p><strong>Instagram 2:</strong> {{ sm.instagram2 }}</p> {% endif %}
+        {% if sm.tiktok %}<p><strong>Tik-Tok:</strong> {{ sm.tiktok }}</p> {% endif %}
+        {% if sm.vk %}<p><strong>Vk:</strong> {{ sm.vk }}</p>{% endif %}
+        {% if sm.facebook %}<p><strong>Facebook:</strong> {{ sm.facebook }}</p>{% endif %}
+        {% if sm.twitter %}<p><strong>Twitter:</strong> {{ sm.twitter }}</p>{% endif %}
+        {% if sm.snapchat %}<p><strong>Snapchat:</strong> {{ sm.snapchat }}</p>{% endif %}
+        {% if sm.odnoklassniki %}<p><strong>Odnoklassniki:</strong> {{ sm.odnoklassniki }}</p>{% endif %}
+        {% if sm.pinterest %}<p><strong>Pinterest:</strong> {{ sm.pinterest }}</p>{% endif %}
+        {% if sm.tumblr %}<p><strong>Tumblr:</strong> {{ sm.tumblr }}</p>{% endif %}
+        {% if sm.yandex_dzen %}<p><strong>Yandex_dzen:</strong> {{ sm.yandex_dzen }}</p>{% endif %}
+        {% if sm.clubhouse %}<p><strong>Clubhouse:</strong> {{ sm.clubhouse }}</p>{% endif %}
+    {% endfor %}
+      {% else %}
+      <h2>The user chose to hide his account!</h2>
+      {% endif %}
+  </div>
+{% endblock %}

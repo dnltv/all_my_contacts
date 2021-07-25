@@ -1,0 +1,16 @@
+{% extends 'base_generic.html' %}
+
+
+{% block content %}
+<h1>Dope Me Home</h1>
+
+    <p>Welcome to <em>Dope Me</em>, a site for sharing your contacts!</p>
+
+<h3>Dynamic Content</h3>
+
+    <p>On this moment our platform has the following counts:</p>
+    <ul>
+        <li><strong>Dope Users: </strong>{{ num_dope_user }}</li>
+        <li><strong>Visible Accounts: </strong>{{ num_visible_dope_user }}</li>
+    </ul>
+{% endblock %}
