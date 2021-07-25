@@ -1,5 +1,5 @@
 dopeme/config.py
-
+.DS_Store
 # Django #
 *.log
 *.pot
