@@ -3,34 +3,150 @@
 {% block content %}
   <h1>Title: {{ user.first_name }} {{ user.last_name }}</h1>
 
-  <p><strong>Id:</strong> <a href="">{{ user.id }}</a></p> <!-- author detail link not yet defined -->
+  <p><strong>Status:</strong></p>
+  <p class="{% if user.status == 'v' %}text-success{% elif user.status == 'h' %}text-danger{% else %}text-warning{% endif %}">{{ user.get_status_display }}</p>
+  {% if user.status == 'v' %}
+
+  <p><strong>Id:</strong> <a href="">{{ user.id }}</a></p> <!-- user detail link not yet defined -->
   <p><strong>Nickname:</strong> {{ user.nickname }}</p>
   <p><strong>Date of Birth:</strong> {{ user.date_of_birth }}</p>
   <p><strong>Description:</strong> {{ user.description }}</p>
-  <p><strong>Status:</strong></p>
-  <p class="{% if user.status == 'v' %}text-success{% elif user.status == 'h' %}text-danger{% else %}text-warning{% endif %}">{{ user.get_status_display }}</p>
+  <!-- <p><strong>Status:</strong></p>
+  <p class="{% if user.status == 'v' %}text-success{% elif user.status == 'h' %}text-danger{% else %}text-warning{% endif %}">{{ user.get_status_display }}</p> -->
 
   <div style="margin-left:20px;margin-top:20px">
-      {% if user.status == 'v' %}
-      <h4>Social Media</h4>
 
-    {% for sm in user.socialmedia_set.all %}
-    <hr>
-      <p><strong>Instagram:</strong> <a>{{ sm.instagram }}</a></p>
-        {% if sm.instagram2 %}<p><strong>Instagram 2:</strong> {{ sm.instagram2 }}</p> {% endif %}
-        {% if sm.tiktok %}<p><strong>Tik-Tok:</strong> {{ sm.tiktok }}</p> {% endif %}
-        {% if sm.vk %}<p><strong>Vk:</strong> {{ sm.vk }}</p>{% endif %}
-        {% if sm.facebook %}<p><strong>Facebook:</strong> {{ sm.facebook }}</p>{% endif %}
-        {% if sm.twitter %}<p><strong>Twitter:</strong> {{ sm.twitter }}</p>{% endif %}
-        {% if sm.snapchat %}<p><strong>Snapchat:</strong> {{ sm.snapchat }}</p>{% endif %}
-        {% if sm.odnoklassniki %}<p><strong>Odnoklassniki:</strong> {{ sm.odnoklassniki }}</p>{% endif %}
-        {% if sm.pinterest %}<p><strong>Pinterest:</strong> {{ sm.pinterest }}</p>{% endif %}
-        {% if sm.tumblr %}<p><strong>Tumblr:</strong> {{ sm.tumblr }}</p>{% endif %}
-        {% if sm.yandex_dzen %}<p><strong>Yandex_dzen:</strong> {{ sm.yandex_dzen }}</p>{% endif %}
-        {% if sm.clubhouse %}<p><strong>Clubhouse:</strong> {{ sm.clubhouse }}</p>{% endif %}
-    {% endfor %}
-      {% else %}
-      <h2>The user chose to hide his account!</h2>
-      {% endif %}
+        {% if user.socialmedia_set.all %}<h3>Social Media</h3>
+        <hr>
+        <!-- sm - for Social Media particular account-->
+        {% for sm in user.socialmedia_set.all %}
+          {% if sm.instagram %}<p><strong>Instagram:</strong><a href="https://www.instagram.com/{{sm.instagram}}"> {{ sm.instagram }}</a></p>{% endif %}
+          {% if sm.instagram2 %}<p><strong>Instagram 2:</strong><a href="https://www.instagram.com/{{sm.instagram2}}"> {{ sm.instagram2 }}</a></p> {% endif %}
+          {% if sm.tiktok %}<p><strong>Tik-Tok:</strong><a> {{ sm.tiktok }}</a></p> {% endif %}
+          {% if sm.vk %}<p><strong>Vk:</strong><a href="https://www.vk.com/{{sm.vk}}"> {{ sm.vk }}</a></p>{% endif %}
+          {% if sm.facebook %}<p><strong>Facebook:</strong><a> {{ sm.facebook }}</a></p>{% endif %}
+          {% if sm.twitter %}<p><strong>Twitter:</strong><a> {{ sm.twitter }}</a></p>{% endif %}
+          {% if sm.snapchat %}<p><strong>Snapchat:</strong><a> {{ sm.snapchat }}</a></p>{% endif %}
+          {% if sm.odnoklassniki %}<p><strong>Одноклассники:</strong><a href="https://ok.ru/profile/{{sm.odnoklassniki}}"> {{ sm.odnoklassniki }}</a></p>{% endif %}
+          {% if sm.pinterest %}<p><strong>Pinterest:</strong><a href="https://www.pinterest.ru/{{sm.pinterest}}"> {{ sm.pinterest }}</a></p>{% endif %}
+          {% if sm.tumblr %}<p><strong>Tumblr:</strong><a href="https://{{sm.tumblr}}.tumblr.com"> {{ sm.tumblr }}</a></p>{% endif %}
+          {% if sm.yandex_dzen %}<p><strong>Яндекс.Дзен:</strong><a href="https://zen.yandex.ru/{{sm.yandex_dzen}}"> {{ sm.yandex_dzen }}</a></p>{% endif %}
+          {% if sm.clubhouse %}<p><strong>Clubhouse:</strong><a href="https://www.joinclubhouse.com/@{{sm.clubhouse}}"> {{ sm.clubhouse }}</a></p>{% endif %}
+        {% endfor %}
+        {% endif %}
+
+
+        {% if user.messengers_set.all %}<h3>Messengers</h3>
+        <hr>
+        {% for messenger in user.messengers_set.all %}
+          {% if messenger.telegram %}<p><strong>Telegram:</strong><a> {{ messenger.telegram }}</a></p>{% endif %}
+          {% if messenger.whatsapp %}<p><strong>WhatsApp:</strong><a> {{ messenger.whatsapp }}</a></p> {% endif %}
+          {% if messenger.viber %}<p><strong>Viber:</strong><a href="viber://chat?number={{messenger.viber}}"> {{ messenger.viber }}</a></p> {% endif %}
+          {% if messenger.facebook_messenger %}<p><strong>Facebook Messenger:</strong><a href="https://www.messenger.com/t/{{messenger.facebook_messenger}}"> {{ messenger.facebook_messenger }}</a></p> {% endif %}
+        {% endfor %}
+        {% endif %}
+
+
+        {% if user.videocallservices_set.all %}<h3>Video Call Services</h3>
+        <hr>
+        {% for videocall in user.videocallservices_set.all %}
+          {% if videocall.facetime %}<p><strong>FaceTime:</strong><a> {{ videocall.facetime }}</a></p>{% endif %}
+          {% if videocall.skype %}<p><strong>Skype:</strong><a href="skype:{{videocall.skype}}?callto"> {{ videocall.skype }}</a></p>{% endif %}
+          {% if videocall.zoom %}<p><strong>Zoom:</strong><a> {{ videocall.zoom }}</a></p>{% endif %}
+          {% if videocall.discord %}<p><strong>Discord:</strong><a> {{ videocall.discord }}</a></p>{% endif %}
+        {% endfor %}
+        {% endif %}
+
+        {% if user.personalcontacts_set.all %}<h3>Personal Contacts</h3>
+        <hr>
+        {% for contact in user.personalcontacts_set.all %}
+          {% if contact.phone_number %}<p><strong>Phone number:</strong><a> {{ contact.phone_number }}</a></p>{% endif %}
+          {% if contact.email %}<p><strong>E-mail:</strong><a> {{ contact.email }}</a></p>{% endif %}
+          {% if contact.site %}<p><strong>Site:</strong><a> {{ contact.site }}</a></p>{% endif %}
+        {% endfor %}
+        {% endif %}
+
+        {% if user.musicplatforms_set.all %}<h3>Music Platforms</h3>
+        <hr>
+        {% for music in user.musicplatforms_set.all %}
+          {% if music.apple_music %}<p><strong>Apple Music:</strong><a> {{ music.apple_music }}</a></p>{% endif %}
+          {% if music.spotify %}<p><strong>Spotify:</strong><a> {{ music.spotify }}</a></p>{% endif %}
+          {% if music.soundcloud %}<p><strong>SoundCloud:</strong><a href="https://soundcloud.com/{{music.soundcloud}}"> {{ music.soundcloud }}</a></p>{% endif %}
+          <!-- https://music.yandex.ru/ -->
+          {% if music.yandex_music %}<p><strong>Яндекс.Музыка:</strong><a href="{{music.yandex_music}}"> {{ music.yandex_music }}</a></p>{% endif %}
+        {% endfor %}
+        {% endif %}
+
+
+        {% if user.videohostings_set.all %}<h3>Video Hostings</h3>
+        <hr>
+        {% for video in user.videohostings_set.all %}
+          <!-- https://www.youtube.com/channel/ -->
+          {% if video.youtube %}<p><strong>YouTube:</strong><a href="{{video.youtube}}"> {{ video.youtube }}</a></p>{% endif %}
+          {% if video.vimeo %}<p><strong>Vimeo:</strong><a href="https://vimeo.com/{{video.vimeo}}"> {{ video.vimeo }}</a></p>{% endif %}
+        {% endfor %}
+        {% endif %}
+
+
+        {% if user.wallets_set.all %}<h3>Wallets</h3>
+        <hr>
+        {% for wallet in user.wallets_set.all %}
+          <!-- В поле пользователь вводит свой телефон, номер нужно подставить в строку (без «», с пробелами.)
+          sms:900&body=перевод «номер телефона» 10 рублей -->
+          {% if wallet.sberbank %}<p><strong>Сбер:</strong><a href="sms:900&body=перевод {{wallet.sberbank}}"> {{ wallet.sberbank }}</a></p>{% endif %}
+          {% if wallet.alfabank %}<p><strong>Альфа-Банк:</strong><a href="{{wallet.alfabank}}"> {{ wallet.alfabank }}</a></p> {% endif %}
+          {% if wallet.tinkoff %}<p><strong>Тинькофф:</strong><a href="{{wallet.tinkoff}}"> {{ wallet.tinkoff }}</a></p> {% endif %}
+          {% if wallet.yoomoney %}<p><strong>YooMoney:</strong><a href="https://yoomoney.ru/to/{{wallet.yoomoney}}"> {{ wallet.yoomoney }}</a></p> {% endif %}
+          {% if wallet.vk_pay %}<p><strong>VK Pay:</strong><a href="https://vk.com/vkpay#action=transfer-to-user&user_id={{wallet.vk_pay}}"> {{ wallet.vk_pay }}</a></p> {% endif %}
+          {% if wallet.paypal %}<p><strong>PayPal:</strong><a href="https://www.paypal.com/paypalme/{{wallet.paypal}}"> {{ wallet.paypal }}</a></p> {% endif %}
+          {% if wallet.qiwi %}<p><strong>QIWI:</strong><a href="https://qiwi.com/p/wallet.qiwi"> {{ wallet.qiwi }}</a></p> {% endif %} <!-- номер начиная с +7-->
+        {% endfor %}
+        {% endif %}
+
+
+        {% if user.portfolio_set.all %}<h3>Portfolio</h3>
+        <hr>
+        {% for pf in user.portfolio_set.all %}
+          {% if pf.behance %}<p><strong>Behance:</strong><a href="https://www.behance.net/{{pf.behance}}"> {{ pf.behance }}</a></p>{% endif %}
+          {% if pf.dribbble %}<p><strong>Dribbble:</strong><a href="https://dribbble.com/{{pf.dribbble}}"> {{ pf.dribbble }}</a></p> {% endif %}
+          {% if pf.five_hundred_px %}<p><strong>500px:</strong><a href="https://500px.com/{{pf.five_hundred_px}}"> {{ pf.five_hundred_px }}</a></p> {% endif %}
+          {% if pf.flickr %}<p><strong>Flickr:</strong><a href="https://www.flickr.com/{{pf.flickr}}"> {{ pf.flickr }}</a></p> {% endif %}
+          {% if pf.linkedin %}<p><strong>LinkedIn:</strong><a> {{ pf.linkedin }}</a></p> {% endif %}
+          {% if pf.github %}<p><strong>GitHub:</strong><a href="https://www.github.com/{{pf.github}}"> {{ pf.github }}</a></p> {% endif %}
+        {% endfor %}
+        {% endif %}
+
+
+        {% if user.gaming_set.all %}<h3>Gaming</h3>
+        <hr>
+        {% for game in user.gaming_set.all %}
+          {% if game.twitch %}<p><strong>Twitch:</strong><a href="{{game.twitch}}"> {{ game.twitch }}</a></p>{% endif %}
+          {% if game.steam %}<p><strong>Steam:</strong><a href="{{game.steam}}"> {{ game.steam }}</a></p>{% endif %}
+        {% endfor %}
+        {% endif %}
+
+
+        {% if user.maps_set.all %}<h3>Maps</h3>
+        <hr>
+        {% for map in user.maps_set.all %}
+          {% if map.address %}<p><strong>Address:</strong><a> {{ map.address }}</a></p>{% endif %}
+          {% if map.yandex_maps %}<p><strong>Яндекс.Карты:</strong><a href="{{map.yandex_maps}}"> {{ map.yandex_maps }}</a></p>{% endif %}
+          {% if map.google_maps %}<p><strong>Google Maps:</strong><a href="{{map.google_maps}}"> {{ map.google_maps }}</a></p>{% endif %}
+          {% if map.two_gis_maps %}<p><strong>2GIS:</strong><a href="{{map.two_gis_maps}}"> {{ map.two_gis_maps }}</a></p>{% endif %}
+        {% endfor %}
+        {% endif %}
+
+
+        {% if user.other_set.all %}<h3>Other</h3>
+        <hr>
+        {% for other in user.other_set.all %}
+          {% if other.onlyfans %}<p><strong>OnlyFans:</strong><a href="https://onlyfans.com/{{other.onlyfans}}"> {{ other.onlyfans }}</a></p>{% endif %}
+          {% if other.podcasts %}<p><strong>Podcasts:</strong><a href="{{other.podcast}}"> {{ other.podcasts }}</a></p>{% endif %}
+        {% endfor %}
+        {% endif %}
+
   </div>
+  {% else %}
+  <h3>The user chose to hide his account</h3>
+  {% endif %}
 {% endblock %}
