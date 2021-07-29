@@ -12,5 +12,6 @@
     <ul>
         <li><strong>Dope Users: </strong>{{ num_dope_user }}</li>
         <li><strong>Visible Accounts: </strong>{{ num_visible_dope_user }}</li>
+        <p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
     </ul>
 {% endblock %}

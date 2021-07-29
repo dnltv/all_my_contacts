@@ -1,21 +1,40 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import AbstractUser
+from django.utils.translation import ugettext_lazy as _
+from .managers import CustomUserManager
 
 
 # Create your models here.
+class CustomUser(AbstractUser):
+    """
+    Custom Model for Auth
+    """
+    username = None
+    email = models.EmailField(_('email address'), unique=True)
+    first_name = models.CharField(_('first name'), max_length=20, help_text=_('Enter your name'))
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['first_name']
+
+    objects = CustomUserManager()
+
+    def __str__(self):
+        return self.email
+
 
 class DopeUser(models.Model):
     """
-    Representation of User model
+    Representation of Profile model
     """
     # Fields
-    # login = models.ForeignKey(models.User)
-    first_name = models.CharField(max_length=20, help_text='Введите своё имя')
-    last_name = models.CharField(max_length=20, help_text='Введите свою фамилию', null=True, blank=True)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, null=True, verbose_name=_('user'))
+    first_name = models.CharField(_('first name'), max_length=20, help_text=_('Enter your name'))
+    last_name = models.CharField(_('last name'), max_length=20, help_text='Введите свою фамилию', null=True, blank=True)
     nickname = models.CharField(max_length=20, help_text='Введите свой никнейм', null=True, blank=True)
     date_of_birth = models.DateField(help_text='Введите дату своего рождения в формате YYYY-MM-DD', null=True,
                                      blank=True)
-    description = models.TextField(help_text='Расскажите о себе', null=True, blank=True)
+    description = models.TextField(help_text='Расскажите о себе', max_length=500, null=True, blank=True)
     photo = models.FileField(null=True, blank=True)
 
     # Видимость аккаунта по никнейму

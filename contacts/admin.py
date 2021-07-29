@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
+from .forms import CustomUserCreationForm, CustomUserChangeForm
 from .models import *
 
 
@@ -57,14 +59,63 @@ class OtherInline(admin.StackedInline):
     extra = 0
 
 
+@admin.register(CustomUser)
+class CustomUserAdmin(UserAdmin):
+    add_form = CustomUserCreationForm
+    form = CustomUserChangeForm
+    model = CustomUser
+    list_display = ('email', 'first_name', 'is_staff', 'is_active',)
+    list_filter = ('email', 'is_staff', 'is_active',)
+    fieldsets = (
+        (None, {'fields': ('email', 'first_name', 'password')}),
+        ('Permissions', {'fields': ('is_staff', 'is_active')}),
+    )
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide',),
+            'fields': ('email', 'first_name', 'password1', 'password2', 'is_staff', 'is_active')}
+        ),
+    )
+    search_fields = ('email', 'first_name')
+    ordering = ('email', 'first_name')
+
+
+#admin.site.register(CustomUser, CustomUserAdmin)
+
+
+# @admin.register(CustomUser)
+# class CustomUserAdmin(UserAdmin):
+    # add_form = CustomUserCreationForm
+    # form = CustomUserChangeForm
+    # model = CustomUser
+    # list_display = ('email', 'first_name', 'is_staff', 'is_active')
+    # list_filter = ('email', 'first_name', 'is_staff', 'is_active')
+    # search_fields = ('email', 'first_name', 'is_staff', 'is_active')
+    # fieldsets = (
+        #(None, {'fields': ('email', 'first_name', 'password')}),
+        #('Permissions', {'fields': ('is_staff', 'is_active')}),
+    #)
+    #add_fieldsets = (
+        #(None, {
+            #'classes': ('wide',),
+            #'fields': ('email', 'password1', 'password2', 'first_name', 'is_staff', 'is_active')
+        #}),
+    #)
+    #search_fields = ('email', 'first_name')
+    #ordering = ('email', 'first_name',)
+
+
+# admin.site.register(CustomUser, CustomUserAdmin)
+
+
 @admin.register(DopeUser)
 class DopeUserAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'id', 'date_of_birth')
-    list_filter = ('first_name', 'last_name', 'id', 'date_of_birth')
-    search_fields = ('first_name__startswith', 'id')
+    list_display = ('user', 'first_name', 'last_name', 'id', 'date_of_birth')
+    list_filter = ('user', 'first_name', 'last_name', 'id', 'date_of_birth')
+    search_fields = ('user', 'first_name__startswith', 'id')
     fieldsets = (
         (None, {
-            'fields': ('first_name', 'last_name',)
+            'fields': ('user', 'first_name', 'last_name',)
         }),
         ('About', {
             'fields': ('photo', 'description', 'nickname', 'date_of_birth',)
@@ -78,7 +129,7 @@ class DopeUserAdmin(admin.ModelAdmin):
                OtherInline]
 
 
-# admin.site.register(UserSocialMedia)
+# admin.site.register(SocialMedia)
 @admin.register(SocialMedia)
 class SocialMediaAdmin(admin.ModelAdmin):
     list_display = ('user', 'instagram', 'instagram2', 'vk', 'facebook', 'twitter')

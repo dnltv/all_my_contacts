@@ -57,6 +57,7 @@
         {% endfor %}
         {% endif %}
 
+
         {% if user.personalcontacts_set.all %}<h3>Personal Contacts</h3>
         <hr>
         {% for contact in user.personalcontacts_set.all %}
@@ -65,6 +66,7 @@
           {% if contact.site %}<p><strong>Site:</strong><a> {{ contact.site }}</a></p>{% endif %}
         {% endfor %}
         {% endif %}
+
 
         {% if user.musicplatforms_set.all %}<h3>Music Platforms</h3>
         <hr>

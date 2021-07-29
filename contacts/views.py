@@ -1,7 +1,6 @@
 from django.views import generic
 from django.shortcuts import render
-from .models import DopeUser, SocialMedia, Messengers
-
+from .models import DopeUser
 
 # Create your views here.
 def index(request):
@@ -15,12 +14,16 @@ def index(request):
     # Сколько раз поделились контактами
     # num_share
 
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
+
     # Отрисовка HTML-шаблона index.html с данными внутри (переменная контекста)
     return render(
         request,
         'index.html',
         context={'num_dope_user': num_dope_user,
                  'num_visible_dope_user': num_visible_dope_user,
+                 'num_visits': num_visits,
                  }
     )
 
@@ -31,6 +34,7 @@ class DopeUsersListView(generic.ListView):
     context_object_name = 'users_list'
     template_name = 'contacts/users_list.html'
     paginate = 10
+    paginate_by = 10
 
 
 class DopeUserDetailView(generic.DetailView):
