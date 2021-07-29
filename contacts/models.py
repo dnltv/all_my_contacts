@@ -38,11 +38,12 @@ class DopeUser(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, null=True, verbose_name=_('user'))
     first_name = models.CharField(_('first name'), max_length=20, help_text='Введите своё имя')
     last_name = models.CharField(_('last name'), max_length=20, help_text='Введите свою фамилию', null=True, blank=True)
-    nickname = models.CharField(max_length=20, help_text='Введите свой никнейм', null=True, blank=True)
-    date_of_birth = models.DateField(help_text='Введите дату своего рождения в формате YYYY-MM-DD', null=True,
-                                     blank=True)
-    description = models.TextField(help_text='Расскажите о себе', max_length=500, null=True, blank=True)
-    photo = models.FileField(null=True, blank=True)
+    nickname = models.CharField(_('nickname'), max_length=20, help_text='Введите свой никнейм', null=True, blank=True)
+    date_of_birth = models.DateField(_('date of birth'), help_text='Введите дату своего рождения',
+                                     null=True, blank=True)
+    description = models.TextField(_('description'), help_text='Расскажите о себе', max_length=500, null=True,
+                                   blank=True)
+    photo = models.FileField(_('photo'), null=True, blank=True)
 
     # Видимость аккаунта по никнейму
     VISIBLE_STATUS = (
@@ -121,9 +122,9 @@ class Messengers(models.Model):
     """
     user = models.ForeignKey(DopeUser, on_delete=models.CASCADE, null=True)
     telegram = models.CharField(max_length=50, help_text='Укажите номер или никнейм Telegram', null=True, blank=True)
-    whatsapp = models.CharField(max_length=50, help_text='Укажите номер или никнейм WhatsApp', null=True, blank=True)
-    viber = models.CharField(max_length=50, help_text='Укажите номер или никнейм Viber', null=True, blank=True)
-    facebook_messenger = models.CharField(max_length=50, help_text='Укажите номер или никнейм Facebook Messenger',
+    whatsapp = models.CharField(max_length=50, help_text='Укажите номер WhatsApp', null=True, blank=True)
+    viber = models.CharField(max_length=50, help_text='Укажите номер Viber', null=True, blank=True)
+    facebook_messenger = models.CharField(max_length=50, help_text='Укажите никнейм Facebook Messenger',
                                           null=True, blank=True)
 
     class Meta:

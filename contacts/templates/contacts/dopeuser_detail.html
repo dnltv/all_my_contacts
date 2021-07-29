@@ -8,8 +8,8 @@
   {% if user.status == 'v' %}
 
   <p><strong>Id:</strong> <a href="">{{ user.id }}</a></p> <!-- user detail link not yet defined -->
-  <p><strong>Nickname:</strong> {% if user.nickname %}{{ user.nickname }}{% endif %}</p>
-  <p><strong>Date of Birth:</strong> {% if user.date_of_birth %}{{ user.date_of_birth }}{% endif %}</p>
+  {% if user.nickname %}<p><strong>Nickname:</strong> {{ user.nickname }}</p>{% endif %}
+  {% if user.date_of_birth %}<p><strong>Date of Birth:</strong> {{ user.date_of_birth }}</p>{% endif %}
   <p><strong>Description:</strong> {% if user.description %}{{ user.description }}{% endif %}</p>
   <!-- <p><strong>Status:</strong></p>
   <p class="{% if user.status == 'v' %}text-success{% elif user.status == 'h' %}text-danger{% else %}text-warning{% endif %}">{{ user.get_status_display }}</p> -->

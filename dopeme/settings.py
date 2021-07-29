@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-from .config import TOKEN, DB_PASS
+from .config import TOKEN, DB_PASS, DB_USER
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -81,7 +81,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'project_db',
-        'USER': 'project_user',
+        'USER': DB_USER,
         'PASSWORD': DB_PASS,
         'HOST': '127.0.0.1',
         'PORT': 5432,
