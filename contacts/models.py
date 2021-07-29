@@ -29,6 +29,13 @@ class CustomUser(AbstractUser):
         return self.email
 
 
+# Second var of creating related model with auto-filled fields.
+# from django.contrib.auth import get_user_model
+# @receiver(post_save, sender=get_user_model())
+# def create_user_cart(sender, instance, created, **kwargs):
+    # if created:
+        # Cart.objects.create(user=instance)
+
 
 class DopeUser(models.Model):
     """
