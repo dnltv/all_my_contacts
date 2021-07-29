@@ -19,8 +19,15 @@ class CustomUser(AbstractUser):
 
     objects = CustomUserManager()
 
+    def save(self, *args, **kwargs):
+        created = not self.pk
+        super().save(*args, **kwargs)
+        if created:
+            DopeUser.objects.create(user=self, first_name=self.first_name)
+
     def __str__(self):
         return self.email
+
 
 
 class DopeUser(models.Model):
@@ -29,7 +36,7 @@ class DopeUser(models.Model):
     """
     # Fields
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, null=True, verbose_name=_('user'))
-    first_name = models.CharField(_('first name'), max_length=20, help_text=_('Enter your name'))
+    first_name = models.CharField(_('first name'), max_length=20, help_text='Введите своё имя')
     last_name = models.CharField(_('last name'), max_length=20, help_text='Введите свою фамилию', null=True, blank=True)
     nickname = models.CharField(max_length=20, help_text='Введите свой никнейм', null=True, blank=True)
     date_of_birth = models.DateField(help_text='Введите дату своего рождения в формате YYYY-MM-DD', null=True,
@@ -47,7 +54,7 @@ class DopeUser(models.Model):
 
     # Metadata
     class Meta:
-        ordering = ['id']
+        ordering = ['user']
 
     # Methods
     def get_absolute_url(self):
@@ -60,7 +67,7 @@ class DopeUser(models.Model):
         """
         String representating the UserModel object (in Admin site etc.)
         """
-        if self.last_name:
+        if self.last_name and not None:
             return f'{self.first_name} {self.last_name}'  #(id: {self.id})
         else:
             return f'{self.first_name}'

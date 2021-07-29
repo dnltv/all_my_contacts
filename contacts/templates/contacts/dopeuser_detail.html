@@ -1,16 +1,16 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Title: {{ user.first_name }} {{ user.last_name }}</h1>
+  <h1>Title: {{ user.first_name }} {% if user.last_name %}{{ user.last_name }}{% endif %}</h1>
 
   <p><strong>Status:</strong></p>
   <p class="{% if user.status == 'v' %}text-success{% elif user.status == 'h' %}text-danger{% else %}text-warning{% endif %}">{{ user.get_status_display }}</p>
   {% if user.status == 'v' %}
 
   <p><strong>Id:</strong> <a href="">{{ user.id }}</a></p> <!-- user detail link not yet defined -->
-  <p><strong>Nickname:</strong> {{ user.nickname }}</p>
-  <p><strong>Date of Birth:</strong> {{ user.date_of_birth }}</p>
-  <p><strong>Description:</strong> {{ user.description }}</p>
+  <p><strong>Nickname:</strong> {% if user.nickname %}{{ user.nickname }}{% endif %}</p>
+  <p><strong>Date of Birth:</strong> {% if user.date_of_birth %}{{ user.date_of_birth }}{% endif %}</p>
+  <p><strong>Description:</strong> {% if user.description %}{{ user.description }}{% endif %}</p>
   <!-- <p><strong>Status:</strong></p>
   <p class="{% if user.status == 'v' %}text-success{% elif user.status == 'h' %}text-danger{% else %}text-warning{% endif %}">{{ user.get_status_display }}</p> -->
 
@@ -39,7 +39,7 @@
         {% if user.messengers_set.all %}<h3>Messengers</h3>
         <hr>
         {% for messenger in user.messengers_set.all %}
-          {% if messenger.telegram %}<p><strong>Telegram:</strong><a> {{ messenger.telegram }}</a></p>{% endif %}
+          {% if messenger.telegram %}<p><strong>Telegram:</strong><a href="https://www.t.me/{{messenger.telegram}}"> {{ messenger.telegram }}</a></p>{% endif %}
           {% if messenger.whatsapp %}<p><strong>WhatsApp:</strong><a> {{ messenger.whatsapp }}</a></p> {% endif %}
           {% if messenger.viber %}<p><strong>Viber:</strong><a href="viber://chat?number={{messenger.viber}}"> {{ messenger.viber }}</a></p> {% endif %}
           {% if messenger.facebook_messenger %}<p><strong>Facebook Messenger:</strong><a href="https://www.messenger.com/t/{{messenger.facebook_messenger}}"> {{ messenger.facebook_messenger }}</a></p> {% endif %}

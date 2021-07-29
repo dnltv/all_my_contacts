@@ -59,6 +59,11 @@ class OtherInline(admin.StackedInline):
     extra = 0
 
 
+class DopeUserInline(admin.StackedInline):
+    model = DopeUser
+    extra = 0
+
+
 @admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
@@ -69,6 +74,8 @@ class CustomUserAdmin(UserAdmin):
     fieldsets = (
         (None, {'fields': ('email', 'first_name', 'password')}),
         ('Permissions', {'fields': ('is_staff', 'is_active')}),
+        ('Date Info', {'fields': (('date_joined', 'last_login'),),
+                       })
     )
     add_fieldsets = (
         (None, {
@@ -78,6 +85,7 @@ class CustomUserAdmin(UserAdmin):
     )
     search_fields = ('email', 'first_name')
     ordering = ('email', 'first_name')
+    inlines = [DopeUserInline]
 
 
 #admin.site.register(CustomUser, CustomUserAdmin)
@@ -110,9 +118,9 @@ class CustomUserAdmin(UserAdmin):
 
 @admin.register(DopeUser)
 class DopeUserAdmin(admin.ModelAdmin):
-    list_display = ('user', 'first_name', 'last_name', 'id', 'date_of_birth')
-    list_filter = ('user', 'first_name', 'last_name', 'id', 'date_of_birth')
-    search_fields = ('user', 'first_name__startswith', 'id')
+    list_display = ('user', 'first_name', 'last_name', 'date_of_birth')
+    list_filter = ('user', 'first_name', 'last_name', 'date_of_birth')
+    search_fields = ('user', 'first_name__startswith',)
     fieldsets = (
         (None, {
             'fields': ('user', 'first_name', 'last_name',)
@@ -123,6 +131,7 @@ class DopeUserAdmin(admin.ModelAdmin):
         ('Account Visibility', {
             'fields': ('status',)
         }),
+
     )
     inlines = [SocialMediaInline, MessengersInline, VideoCallServicesInline, PersonalContactsInline,
                MusicPlatformsInline, VideoHostingsInline, WalletsInline, PortfolioInline, GamingInline, MapsInline,
