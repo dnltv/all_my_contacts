@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import os
 from .config import TOKEN, DB_PASS, DB_USER
 from pathlib import Path
 
@@ -58,7 +59,7 @@ ROOT_URLCONF = 'dopeme.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -132,3 +133,8 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = '/contacts/users/'
+
+# Вывод в консоль (пока не подключены почтовые сервисы)
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
