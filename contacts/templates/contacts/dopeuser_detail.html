@@ -39,7 +39,7 @@
         {% if user.messengers_set.all %}<h3>Messengers</h3>
         <hr>
         {% for messenger in user.messengers_set.all %}
-          {% if messenger.telegram %}<p><strong>Telegram:</strong><a href="https://www.t.me/{{messenger.telegram}}"> {{ messenger.telegram }}</a></p>{% endif %}
+          {% if messenger.telegram %}<p><strong>Telegram:</strong><a href="https://t.me/{{messenger.telegram}}"> {{ messenger.telegram }}</a></p>{% endif %}
           {% if messenger.whatsapp %}<p><strong>WhatsApp:</strong><a> {{ messenger.whatsapp }}</a></p> {% endif %}
           {% if messenger.viber %}<p><strong>Viber:</strong><a href="viber://chat?number={{messenger.viber}}"> {{ messenger.viber }}</a></p> {% endif %}
           {% if messenger.facebook_messenger %}<p><strong>Facebook Messenger:</strong><a href="https://www.messenger.com/t/{{messenger.facebook_messenger}}"> {{ messenger.facebook_messenger }}</a></p> {% endif %}

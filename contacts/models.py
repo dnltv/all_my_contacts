@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import ugettext_lazy as _
 from .managers import CustomUserManager
+from autoslug import AutoSlugField
 
 
 # Create your models here.
@@ -44,6 +45,7 @@ class DopeUser(models.Model):
     # Fields
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, null=True, verbose_name=_('user'))
     first_name = models.CharField(_('first name'), max_length=20, help_text='Введите своё имя')
+    slug = AutoSlugField(populate_from='first_name')
     last_name = models.CharField(_('last name'), max_length=20, help_text='Введите свою фамилию', null=True, blank=True)
     nickname = models.CharField(_('nickname'), max_length=20, help_text='Введите свой никнейм', null=True, blank=True)
     date_of_birth = models.DateField(_('date of birth'), help_text='Введите дату своего рождения',

@@ -75,7 +75,8 @@ class CustomUserAdmin(UserAdmin):
         (None, {'fields': ('email', 'first_name', 'password')}),
         ('Permissions', {'fields': ('is_staff', 'is_active')}),
         ('Date Info', {'fields': (('date_joined', 'last_login'),),
-                       })
+                       }),
+        ('Groups', {'fields': ('groups',)}),
     )
     add_fieldsets = (
         (None, {
