@@ -69,14 +69,14 @@ class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
     model = CustomUser
-    list_display = ('email', 'first_name', 'is_staff', 'is_active',)
+    list_display = ('email', 'first_name', 'is_staff', 'is_active', )
     list_filter = ('email', 'is_staff', 'is_active',)
     fieldsets = (
         (None, {'fields': ('email', 'first_name', 'password')}),
-        ('Permissions', {'fields': ('is_staff', 'is_active')}),
+        ('Permissions', {'fields': ('is_staff', 'is_active', )}),
         ('Date Info', {'fields': (('date_joined', 'last_login'),),
                        }),
-        ('Groups', {'fields': ('groups',)}),
+        ('Groups', {'fields': ('groups', )}),
     )
     add_fieldsets = (
         (None, {
@@ -89,37 +89,9 @@ class CustomUserAdmin(UserAdmin):
     inlines = [DopeUserInline]
 
 
-#admin.site.register(CustomUser, CustomUserAdmin)
-
-
-# @admin.register(CustomUser)
-# class CustomUserAdmin(UserAdmin):
-    # add_form = CustomUserCreationForm
-    # form = CustomUserChangeForm
-    # model = CustomUser
-    # list_display = ('email', 'first_name', 'is_staff', 'is_active')
-    # list_filter = ('email', 'first_name', 'is_staff', 'is_active')
-    # search_fields = ('email', 'first_name', 'is_staff', 'is_active')
-    # fieldsets = (
-        #(None, {'fields': ('email', 'first_name', 'password')}),
-        #('Permissions', {'fields': ('is_staff', 'is_active')}),
-    #)
-    #add_fieldsets = (
-        #(None, {
-            #'classes': ('wide',),
-            #'fields': ('email', 'password1', 'password2', 'first_name', 'is_staff', 'is_active')
-        #}),
-    #)
-    #search_fields = ('email', 'first_name')
-    #ordering = ('email', 'first_name',)
-
-
-# admin.site.register(CustomUser, CustomUserAdmin)
-
-
 @admin.register(DopeUser)
 class DopeUserAdmin(admin.ModelAdmin):
-    list_display = ('user', 'first_name', 'last_name', 'date_of_birth')
+    list_display = ('user', 'first_name', 'last_name', 'date_of_birth', )
     list_filter = ('user', 'first_name', 'last_name', 'date_of_birth')
     search_fields = ('user', 'first_name__startswith',)
     fieldsets = (
@@ -127,12 +99,11 @@ class DopeUserAdmin(admin.ModelAdmin):
             'fields': ('user', 'first_name', 'last_name',)
         }),
         ('About', {
-            'fields': ('photo', 'description', 'nickname', 'date_of_birth',)
+            'fields': ('photo', 'description', 'date_of_birth',)
         }),
         ('Account Visibility', {
             'fields': ('status',)
         }),
-
     )
     inlines = [SocialMediaInline, MessengersInline, VideoCallServicesInline, PersonalContactsInline,
                MusicPlatformsInline, VideoHostingsInline, WalletsInline, PortfolioInline, GamingInline, MapsInline,

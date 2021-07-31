@@ -1,6 +1,9 @@
 from django.views import generic
 from django.shortcuts import render
 from .models import DopeUser
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import EditDopeUserModelForm
+
 
 # Create your views here.
 def index(request):
@@ -28,8 +31,10 @@ def index(request):
     )
 
 
-class DopeUsersListView(generic.ListView):
-    """Generic class-based view for a list of users w/ visible accounts."""
+class DopeUsersListView(LoginRequiredMixin, generic.ListView):
+    """
+    Generic class-based view for a list of users w/ visible accounts.
+    """
     model = DopeUser
     context_object_name = 'users_list'
     template_name = 'contacts/users_list.html'
@@ -38,11 +43,16 @@ class DopeUsersListView(generic.ListView):
 
 
 class DopeUserDetailView(generic.DetailView):
+    """
+    Generic class-based view for all info, accounts and links of user.
+    """
     model = DopeUser
     context_object_name = 'user'
-    paginate = 10
 
 
-
-
+class EditDopeUserView(generic.UpdateView):
+    model = DopeUser
+    form_class = EditDopeUserModelForm
+    context_object_name = 'user'
+    template_name = 'contacts/profile_edit.html'
 

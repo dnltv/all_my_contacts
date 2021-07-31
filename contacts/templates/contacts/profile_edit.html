@@ -1,0 +1,19 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}
+    <title>Edit Profile</title>
+{% endblock %}
+
+{% block content %}
+    <h1>User: {{user.first_name}}</h1>
+
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+        {{ form }}
+        </table>
+        <input type="submit" value="Submit" />
+    </form>
+
+{% endblock %}

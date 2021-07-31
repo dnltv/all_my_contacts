@@ -1,6 +1,8 @@
 {% extends "base_generic.html" %}
 
+
 {% block content %}
+
   <h1>Title: {{ user.first_name }} {% if user.last_name %}{{ user.last_name }}{% endif %}</h1>
 
   <p><strong>Status:</strong></p>
@@ -11,8 +13,6 @@
   {% if user.nickname %}<p><strong>Nickname:</strong> {{ user.nickname }}</p>{% endif %}
   {% if user.date_of_birth %}<p><strong>Date of Birth:</strong> {{ user.date_of_birth }}</p>{% endif %}
   <p><strong>Description:</strong> {% if user.description %}{{ user.description }}{% endif %}</p>
-  <!-- <p><strong>Status:</strong></p>
-  <p class="{% if user.status == 'v' %}text-success{% elif user.status == 'h' %}text-danger{% else %}text-warning{% endif %}">{{ user.get_status_display }}</p> -->
 
   <div style="margin-left:20px;margin-top:20px">
 
