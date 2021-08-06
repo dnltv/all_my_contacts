@@ -1,6 +1,6 @@
 from django.views import generic
 from django.shortcuts import render
-from .models import DopeUser
+from .models import DopeUser, SocialMedia
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import EditDopeUserModelForm
 
@@ -64,7 +64,7 @@ class UpdateDopeUserView(LoginRequiredMixin, generic.UpdateView):
     template_name = 'contacts/profile_edit.html'
     slug_field = 'first_name'
     slug_url_kwarg = 'slug'
-    #success_url = reverse_lazy('index')
+    # success_url = reverse_lazy('index')
 
     def get_object(self):
         return self.request.user.dopeuser

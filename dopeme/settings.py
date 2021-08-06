@@ -134,7 +134,7 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'users'
+LOGIN_REDIRECT_URL = 'index'
 
 # Вывод в консоль (пока не подключены почтовые сервисы)
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
