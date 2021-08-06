@@ -47,7 +47,7 @@ class DopeUser(models.Model):
     first_name = models.CharField(_('first name'), max_length=20, help_text='Введите своё имя')
     slug = AutoSlugField(populate_from='first_name')
     last_name = models.CharField(_('last name'), max_length=20, help_text='Введите свою фамилию', null=True, blank=True)
-    #nickname = models.CharField(_('nickname'), max_length=20, help_text='Введите свой никнейм', null=True, blank=True)
+    #  nickname = models.CharField(_('nickname'), max_length=20, help_text='Введите свой никнейм', null=True, blank=True)
     date_of_birth = models.DateField(_('date of birth'), help_text='Введите дату своего рождения',
                                      null=True, blank=True)
     description = models.TextField(_('description'), help_text='Расскажите о себе', max_length=500, null=True,

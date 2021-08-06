@@ -25,7 +25,6 @@ urlpatterns = [
     path('contacts/', include('contacts.urls')),
     path('', RedirectView.as_view(url='/contacts/', permanent=True)),
     path('accounts/', include('django.contrib.auth.urls')),
-    # path('accounts/profile/', )
 ]
 
 # Размещение статических файлов

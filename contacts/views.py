@@ -50,9 +50,31 @@ class DopeUserDetailView(generic.DetailView):
     context_object_name = 'user'
 
 
-class EditDopeUserView(generic.UpdateView):
-    model = DopeUser
-    form_class = EditDopeUserModelForm
+#class UpdateDopeUserView(LoginRequiredMixin, generic.UpdateView):
+    #model = DopeUser
+    #form_class = EditDopeUserModelForm
+    #context_object_name = 'user'
+    #template_name = 'contacts/profile_edit.html'
+
+
+class UpdateDopeUserView(LoginRequiredMixin, generic.UpdateView):
+    models = DopeUser
+    fields = ['last_name', 'date_of_birth', 'description', 'photo', 'status']
     context_object_name = 'user'
     template_name = 'contacts/profile_edit.html'
+    slug_field = 'first_name'
+    slug_url_kwarg = 'slug'
+    #success_url = reverse_lazy('index')
 
+    def get_object(self):
+        return self.request.user.dopeuser
+
+
+# test for front from prev project
+def profile(request):
+
+    return render(
+        request,
+        'contacts/profile.html',
+
+    )
