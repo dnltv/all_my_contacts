@@ -52,17 +52,10 @@ class DopeUserDetailView(generic.DetailView):
     context_object_name = 'user_detail'
 
 
-#class UpdateDopeUserView(LoginRequiredMixin, generic.UpdateView):
-    #model = DopeUser
-    #form_class = EditDopeUserModelForm
-    #context_object_name = 'user'
-    #template_name = 'contacts/profile_edit.html'
-
-
 class UpdateDopeUserView(LoginRequiredMixin, generic.UpdateView):
     models = DopeUser
     fields = ['last_name', 'date_of_birth', 'description', 'photo', 'status']
-    context_object_name = 'user'
+    context_object_name = 'user_update'
     template_name = 'contacts/profile_edit.html'
 
     def get_object(self):
