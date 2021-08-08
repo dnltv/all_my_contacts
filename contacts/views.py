@@ -64,9 +64,6 @@ class UpdateDopeUserView(LoginRequiredMixin, generic.UpdateView):
     fields = ['last_name', 'date_of_birth', 'description', 'photo', 'status']
     context_object_name = 'user'
     template_name = 'contacts/profile_edit.html'
-    # slug_field = 'first_name'
-    # slug_url_kwarg = 'slug'
-    # success_url = reverse_lazy('index')
 
     def get_object(self):
         return self.request.user.dopeuser
