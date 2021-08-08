@@ -13,7 +13,7 @@ class CustomUser(AbstractUser):
     """
     username = None
     email = models.EmailField(_('email address'), unique=True)
-    first_name = models.CharField(_('first name'), max_length=20, help_text=_('Enter your name'))
+    first_name = models.CharField(_('first name'), max_length=20)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name']
@@ -60,7 +60,7 @@ class DopeUser(models.Model):
         ('v', 'Visible'),
         ('h', 'Hidden'),
     )
-    status = models.CharField(max_length=1, choices=VISIBLE_STATUS, blank=True, default='v',
+    status = models.CharField(_('visible status'), max_length=1, choices=VISIBLE_STATUS, blank=True, default='v',
                               help_text='Видимость аккаунта')
 
     # Metadata
@@ -109,12 +109,6 @@ class SocialMedia(models.Model):
         ordering = ['user']
         verbose_name_plural = 'Social Media'
         # permissions
-
-    #def get_absolute_url(self):
-        #"""
-        #Returns the url to access a particular Social Media refs of User.
-        #"""
-        #return reverse('user-detail-view', args=[str(self.id)])
 
     def __str__(self):
         """

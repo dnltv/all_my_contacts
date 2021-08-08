@@ -1,6 +1,8 @@
 from django.views import generic
 from django.shortcuts import render
-from .models import DopeUser, SocialMedia
+from django.urls import reverse
+from .models import DopeUser, CustomUser
+from .forms import CustomUserChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import EditDopeUserModelForm
 
@@ -47,7 +49,7 @@ class DopeUserDetailView(generic.DetailView):
     Generic class-based view for all info, accounts and links of user.
     """
     model = DopeUser
-    context_object_name = 'user'
+    context_object_name = 'user_detail'
 
 
 #class UpdateDopeUserView(LoginRequiredMixin, generic.UpdateView):
@@ -62,12 +64,28 @@ class UpdateDopeUserView(LoginRequiredMixin, generic.UpdateView):
     fields = ['last_name', 'date_of_birth', 'description', 'photo', 'status']
     context_object_name = 'user'
     template_name = 'contacts/profile_edit.html'
-    slug_field = 'first_name'
-    slug_url_kwarg = 'slug'
+    # slug_field = 'first_name'
+    # slug_url_kwarg = 'slug'
     # success_url = reverse_lazy('index')
 
     def get_object(self):
         return self.request.user.dopeuser
+
+    #def get_absolute_url(self):
+        #return reverse('edit', args=[self])
+
+
+class SettingAccount(LoginRequiredMixin, generic.UpdateView):
+    model = CustomUser
+    form = CustomUserChangeForm
+    fields = ['email', 'first_name']
+    template_name = 'contacts/settings.html'
+
+    def get_object(self):
+        return self.request.user
+
+    def get_absolute_url(self):
+        return reverse('settings', args=[self])
 
 
 # test for front from prev project

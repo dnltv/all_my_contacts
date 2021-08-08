@@ -69,8 +69,8 @@ class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
     model = CustomUser
-    list_display = ('email', 'first_name', 'is_staff', 'is_active', )
-    list_filter = ('email', 'is_staff', 'is_active',)
+    list_display = ('email', 'first_name', 'is_staff')
+    list_filter = ('email', 'is_staff', 'is_active', 'groups')
     fieldsets = (
         (None, {'fields': ('email', 'first_name', 'password')}),
         ('Permissions', {'fields': ('is_staff', 'is_active', )}),
@@ -87,6 +87,10 @@ class CustomUserAdmin(UserAdmin):
     search_fields = ('email', 'first_name')
     ordering = ('email', 'first_name')
     inlines = [DopeUserInline]
+
+    # CustomUser has no attribute 'group'
+    # def get_group(self, obj):
+        # return ', '.join([f.group for f in obj.group.all()])
 
 
 @admin.register(DopeUser)

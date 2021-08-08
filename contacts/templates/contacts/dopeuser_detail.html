@@ -3,23 +3,23 @@
 
 {% block content %}
 
-  <h1>Title: {{ user.first_name }} {% if user.last_name %}{{ user.last_name }}{% endif %}</h1>
+  <h1>User: {{ user_detail.first_name }} {% if user_detail.last_name %}{{ user_detail.last_name }}{% endif %}</h1>
 
   <p><strong>Status:</strong></p>
-  <p class="{% if user.status == 'v' %}text-success{% elif user.status == 'h' %}text-danger{% else %}text-warning{% endif %}">{{ user.get_status_display }}</p>
-  {% if user.status == 'v' %}
+  <p class="{% if user_detail.status == 'v' %}text-success{% elif user_detail.status == 'h' %}text-danger{% else %}text-warning{% endif %}">{{ user_detail.get_status_display }}</p>
+  {% if user_detail.status == 'v' %}
 
-  <p><strong>Id:</strong> <a href="">{{ user.id }}</a></p> <!-- user detail link not yet defined -->
-  {% if user.nickname %}<p><strong>Nickname:</strong> {{ user.nickname }}</p>{% endif %}
-  {% if user.date_of_birth %}<p><strong>Date of Birth:</strong> {{ user.date_of_birth }}</p>{% endif %}
-  <p><strong>Description:</strong> {% if user.description %}{{ user.description }}{% endif %}</p>
+  <p><strong>Id:</strong> <a href="">{{ user_detail.id }}</a></p> <!-- user detail link not yet defined -->
+  {% if user_detail.nickname %}<p><strong>Nickname:</strong> {{ user_detail.nickname }}</p>{% endif %}
+  {% if user_detail.date_of_birth %}<p><strong>Date of Birth:</strong> {{ user_detail.date_of_birth }}</p>{% endif %}
+  <p><strong>Description:</strong> {% if user_detail.description %}{{ user_detail.description }}{% endif %}</p>
 
   <div style="margin-left:20px;margin-top:20px">
 
-        {% if user.socialmedia_set.all %}<h3>Social Media</h3>
+        {% if user_detail.socialmedia_set.all %}<h3>Social Media</h3>
         <hr>
         <!-- sm - for Social Media particular account-->
-        {% for sm in user.socialmedia_set.all %}
+        {% for sm in user_detail.socialmedia_set.all %}
           {% if sm.instagram %}<p><strong>Instagram:</strong><a href="https://www.instagram.com/{{sm.instagram}}"> {{ sm.instagram }}</a></p>{% endif %}
           {% if sm.instagram2 %}<p><strong>Instagram 2:</strong><a href="https://www.instagram.com/{{sm.instagram2}}"> {{ sm.instagram2 }}</a></p> {% endif %}
           {% if sm.tiktok %}<p><strong>Tik-Tok:</strong><a> {{ sm.tiktok }}</a></p> {% endif %}
@@ -36,9 +36,9 @@
         {% endif %}
 
 
-        {% if user.messengers_set.all %}<h3>Messengers</h3>
+        {% if user_detail.messengers_set.all %}<h3>Messengers</h3>
         <hr>
-        {% for messenger in user.messengers_set.all %}
+        {% for messenger in user_detail.messengers_set.all %}
           {% if messenger.telegram %}<p><strong>Telegram:</strong><a href="https://t.me/{{messenger.telegram}}"> {{ messenger.telegram }}</a></p>{% endif %}
           {% if messenger.whatsapp %}<p><strong>WhatsApp:</strong><a> {{ messenger.whatsapp }}</a></p> {% endif %}
           {% if messenger.viber %}<p><strong>Viber:</strong><a href="viber://chat?number={{messenger.viber}}"> {{ messenger.viber }}</a></p> {% endif %}
@@ -47,9 +47,9 @@
         {% endif %}
 
 
-        {% if user.videocallservices_set.all %}<h3>Video Call Services</h3>
+        {% if user_detail.videocallservices_set.all %}<h3>Video Call Services</h3>
         <hr>
-        {% for videocall in user.videocallservices_set.all %}
+        {% for videocall in user_detail.videocallservices_set.all %}
           {% if videocall.facetime %}<p><strong>FaceTime:</strong><a> {{ videocall.facetime }}</a></p>{% endif %}
           {% if videocall.skype %}<p><strong>Skype:</strong><a href="skype:{{videocall.skype}}?callto"> {{ videocall.skype }}</a></p>{% endif %}
           {% if videocall.zoom %}<p><strong>Zoom:</strong><a> {{ videocall.zoom }}</a></p>{% endif %}
@@ -58,9 +58,9 @@
         {% endif %}
 
 
-        {% if user.personalcontacts_set.all %}<h3>Personal Contacts</h3>
+        {% if user_detail.personalcontacts_set.all %}<h3>Personal Contacts</h3>
         <hr>
-        {% for contact in user.personalcontacts_set.all %}
+        {% for contact in user_detail.personalcontacts_set.all %}
           {% if contact.phone_number %}<p><strong>Phone number:</strong><a> {{ contact.phone_number }}</a></p>{% endif %}
           {% if contact.email %}<p><strong>E-mail:</strong><a> {{ contact.email }}</a></p>{% endif %}
           {% if contact.site %}<p><strong>Site:</strong><a> {{ contact.site }}</a></p>{% endif %}
@@ -68,9 +68,9 @@
         {% endif %}
 
 
-        {% if user.musicplatforms_set.all %}<h3>Music Platforms</h3>
+        {% if user_detail.musicplatforms_set.all %}<h3>Music Platforms</h3>
         <hr>
-        {% for music in user.musicplatforms_set.all %}
+        {% for music in user_detail.musicplatforms_set.all %}
           {% if music.apple_music %}<p><strong>Apple Music:</strong><a> {{ music.apple_music }}</a></p>{% endif %}
           {% if music.spotify %}<p><strong>Spotify:</strong><a> {{ music.spotify }}</a></p>{% endif %}
           {% if music.soundcloud %}<p><strong>SoundCloud:</strong><a href="https://soundcloud.com/{{music.soundcloud}}"> {{ music.soundcloud }}</a></p>{% endif %}
@@ -80,9 +80,9 @@
         {% endif %}
 
 
-        {% if user.videohostings_set.all %}<h3>Video Hostings</h3>
+        {% if user_detail.videohostings_set.all %}<h3>Video Hostings</h3>
         <hr>
-        {% for video in user.videohostings_set.all %}
+        {% for video in user_detail.videohostings_set.all %}
           <!-- https://www.youtube.com/channel/ -->
           {% if video.youtube %}<p><strong>YouTube:</strong><a href="{{video.youtube}}"> {{ video.youtube }}</a></p>{% endif %}
           {% if video.vimeo %}<p><strong>Vimeo:</strong><a href="https://vimeo.com/{{video.vimeo}}"> {{ video.vimeo }}</a></p>{% endif %}
@@ -90,9 +90,9 @@
         {% endif %}
 
 
-        {% if user.wallets_set.all %}<h3>Wallets</h3>
+        {% if user_detail.wallets_set.all %}<h3>Wallets</h3>
         <hr>
-        {% for wallet in user.wallets_set.all %}
+        {% for wallet in user_detail.wallets_set.all %}
           <!-- В поле пользователь вводит свой телефон, номер нужно подставить в строку (без «», с пробелами.)
           sms:900&body=перевод «номер телефона» 10 рублей -->
           {% if wallet.sberbank %}<p><strong>Сбер:</strong><a href="sms:900&body=перевод {{wallet.sberbank}}"> {{ wallet.sberbank }}</a></p>{% endif %}
@@ -106,9 +106,9 @@
         {% endif %}
 
 
-        {% if user.portfolio_set.all %}<h3>Portfolio</h3>
+        {% if user_detail.portfolio_set.all %}<h3>Portfolio</h3>
         <hr>
-        {% for pf in user.portfolio_set.all %}
+        {% for pf in user_detail.portfolio_set.all %}
           {% if pf.behance %}<p><strong>Behance:</strong><a href="https://www.behance.net/{{pf.behance}}"> {{ pf.behance }}</a></p>{% endif %}
           {% if pf.dribbble %}<p><strong>Dribbble:</strong><a href="https://dribbble.com/{{pf.dribbble}}"> {{ pf.dribbble }}</a></p> {% endif %}
           {% if pf.five_hundred_px %}<p><strong>500px:</strong><a href="https://500px.com/{{pf.five_hundred_px}}"> {{ pf.five_hundred_px }}</a></p> {% endif %}
@@ -119,18 +119,18 @@
         {% endif %}
 
 
-        {% if user.gaming_set.all %}<h3>Gaming</h3>
+        {% if user_detail.gaming_set.all %}<h3>Gaming</h3>
         <hr>
-        {% for game in user.gaming_set.all %}
+        {% for game in user_detail.gaming_set.all %}
           {% if game.twitch %}<p><strong>Twitch:</strong><a href="{{game.twitch}}"> {{ game.twitch }}</a></p>{% endif %}
           {% if game.steam %}<p><strong>Steam:</strong><a href="{{game.steam}}"> {{ game.steam }}</a></p>{% endif %}
         {% endfor %}
         {% endif %}
 
 
-        {% if user.maps_set.all %}<h3>Maps</h3>
+        {% if user_detail.maps_set.all %}<h3>Maps</h3>
         <hr>
-        {% for map in user.maps_set.all %}
+        {% for map in user_detail.maps_set.all %}
           {% if map.address %}<p><strong>Address:</strong><a> {{ map.address }}</a></p>{% endif %}
           {% if map.yandex_maps %}<p><strong>Яндекс.Карты:</strong><a href="{{map.yandex_maps}}"> {{ map.yandex_maps }}</a></p>{% endif %}
           {% if map.google_maps %}<p><strong>Google Maps:</strong><a href="{{map.google_maps}}"> {{ map.google_maps }}</a></p>{% endif %}
@@ -139,9 +139,9 @@
         {% endif %}
 
 
-        {% if user.other_set.all %}<h3>Other</h3>
+        {% if user_detail.other_set.all %}<h3>Other</h3>
         <hr>
-        {% for other in user.other_set.all %}
+        {% for other in user_detail.other_set.all %}
           {% if other.onlyfans %}<p><strong>OnlyFans:</strong><a href="https://onlyfans.com/{{other.onlyfans}}"> {{ other.onlyfans }}</a></p>{% endif %}
           {% if other.podcasts %}<p><strong>Podcasts:</strong><a href="{{other.podcast}}"> {{ other.podcasts }}</a></p>{% endif %}
         {% endfor %}
