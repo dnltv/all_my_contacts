@@ -23,4 +23,3 @@ class EditDopeUserModelForm(ModelForm):
         model = DopeUser
         exclude = ['user', 'first_name', 'slug']
 
-

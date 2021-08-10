@@ -1,17 +1,51 @@
-{% extends 'base_generic.html' %}
+<!DOCTYPE html>
+<html class="page" lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <title>Добро пожаловать в dope</title>
+            <meta name="description" content="Добро пожаловать в dope">
+            <meta name="csrf-param" content="authenticity_token" />
+            <meta name="csrf-token" content="6tbYQnPumXn1IfYrN2A7vrdc3Jr95MgTbT+l08cKl2QQkH/M+0R1MfY2H8Gtm5oSm3+lraJ4Lp4TgnwsNeKVnQ==" />
 
+        <link rel="apple-touch-icon" sizes="180x180" href="https://dopeme.ru/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="https://dopeme.ru/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://dopeme.ru/favicon-16x16.png">
+        <link rel="manifest" href="https://dopeme.ru/manifest.json">
+        <link rel="mask-icon" href="https://dopeme.ru/safari-pinned-tab.svg" color="#5bbad5">
 
-{% block content %}
-<h1>Dope Me Home</h1>
+        <meta name="msapplication-TileColor" content="#2d89ef">
+        <meta name="theme-color" content="#ffffff">
+        <script type="text/javascript">
+            !function(){"use strict";
+            function e(e,t,n){e.addEventListener?e.addEventListener(t,n,!1):e.attachEvent&&e.attachEvent("on"+t,n)}function t(e){return window.localStorage&&localStorage.font_css_cache&&localStorage.font_css_cache_file===e}function n(){if(window.localStorage&&window.XMLHttpRequest)if(t(o))c(localStorage.font_css_cache);else{var n=new XMLHttpRequest;n.open("GET",o,!0),e(n,"load",function(){4===n.readyState&&(c(n.responseText),localStorage.font_css_cache=n.responseText,localStorage.font_css_cache_file=o)}),n.send()}else{var a=document.createElement("link");a.href=o,a.rel="stylesheet",a.type="text/css",document.getElementsByTagName("head")[0].appendChild(a),document.cookie="font_css_cache"}}function c(e){var t=document.createElement("style");t.innerHTML=e,document.getElementsByTagName("head")[0].appendChild(t)}var o="/fonts.css";window.localStorage&&localStorage.font_css_cache||document.cookie.indexOf("font_css_cache")>-1?n():e(window,"load",n)}();
+        </script>
 
-    <p>Welcome to <em>Dope Me</em>, a site for sharing your contacts!</p>
+        <noscript>
+            <link rel="stylesheet" href="https://dopeme.ru/fonts.css">
+        </noscript>
 
-<h3>Dynamic Content</h3>
+        <link rel="stylesheet" media="all" href="https://dopeme.ru/packs/css/application-0b9f30c1.css" data-turbolinks-track="reload" />
 
-    <p>On this moment our platform has the following counts:</p>
-    <ul>
-        <li><strong>Dope Users: </strong>{{ num_dope_user }}</li>
-        <li><strong>Visible Accounts: </strong>{{ num_visible_dope_user }}</li>
-        <p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
-    </ul>
-{% endblock %}
+        <script src="https://dopeme.ru/packs/js/application-a7ed1b0f4a7dca21e476.js" data-turbolinks-track="reload" async="async" defer="defer">
+        </script>
+
+    </head>
+
+    <body class="page__body">
+    <div class="container ml-auto mr-auto min-h-screen">
+        <div class="min-h-screen flex flex-col items-center justify-start fixed top-0 left-0 w-full pb-12 pt-32">
+            <a class="fixed bg-dark top-0 l-0 w-full z-30 h-12 text-white flex items-center justify-center" target="_blank" href="https://dope.su">Нажмите сюда, чтобы купить Dope</a>
+            <h1 class="text-3xl text-center leading-tight mb-8 px-2 flex flex-wrap justify-center">Добро пожаловать в Dope</h1>
+            <div class="text-xl text-center leading-tight mb-4 px-2">Что вы хотите сделать?</div>
+            <!-- заменить  url -->
+            <a class="btn btn-main btn-block" href="http://127.0.0.1:8000/accounts/login">Вход</a>
+            <div class="border-b border-gray-300 w-full my-6 relative">
+                <div class="rounded absolute bg-gray-100 w-12 text-center" style="left:50%;top:-10px;line-height: 1;transform: translate(-50%, 0);">или</div>
+            </div>
+            <a class="btn btn-main btn-block" href="https://dopeme.ru/sign_up">Регистрация</a>
+        </div>
+    </div>
+</body>
+</html>
