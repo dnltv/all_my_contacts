@@ -56,7 +56,7 @@ class UpdateDopeUserView(LoginRequiredMixin, generic.UpdateView):
     models = DopeUser
     fields = ['last_name', 'date_of_birth', 'description', 'photo', 'status']
     context_object_name = 'user_update'
-    template_name = 'contacts/profile_edit.html'
+    template_name = 'contacts/edit.html'
 
     def get_object(self):
         return self.request.user.dopeuser

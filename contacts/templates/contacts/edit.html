@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html class="page" lang="ru">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+
+    <title>Редактирование профиля</title>
+
+    <meta name="description" content="Редактирование профиля">
+    <meta name="csrf-param" content="authenticity_token"/>
+    <meta name="csrf-token" content="/ruYlnlchxPIksN8NC2CgxNk3LKTsdNoKkb2J2HrfsB4a7WhpoOI09aakkX7XFXGl+TQ8Y55z/iV0Zj1LDLWmw=="/>
+
+    <!-- <script type="text/javascript" nonce="d50eac20daf54c7787a97b2d820" src="//local.adguard.org?ts=1628525601534&amp;type=content-script&amp;dmn=dopeme.ru&amp;app=com.apple.Safari&amp;css=1&amp;js=1&amp;gcss=1&amp;rel=1&amp;rji=1&amp;sbe=0&amp;stealth=1&amp;uag=TW96aWxsYS81LjAgKE1hY2ludG9zaDsgSW50ZWwgTWFjIE9TIFggMTBfMTVfNykgQXBwbGVXZWJLaXQvNjA1LjEuMTUgKEtIVE1MLCBsaWtlIEdlY2tvKSBWZXJzaW9uLzE0LjEuMiBTYWZhcmkvNjA1LjEuMTU=&amp;trref=aHR0cHM6Ly9kb3BlbWUucnUv"></script>
+    <script type="text/javascript" nonce="d50eac20daf54c7787a97b2d820" src="//local.adguard.org?ts=1628525601534&amp;name=Web%20of%20Trust&amp;name=AdGuard%20Popup%20Blocker&amp;name=AdGuard%20Extra&amp;type=user-script"></script>
+    -->
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+
+    <script type="text/javascript">
+    !function() {
+        "use strict";
+        function e(e, t, n) {
+            e.addEventListener ? e.addEventListener(t, n, !1) : e.attachEvent && e.attachEvent("on" + t, n)
+        }
+        function t(e) {
+            return window.localStorage && localStorage.font_css_cache && localStorage.font_css_cache_file === e
+        }
+        function n() {
+            if (window.localStorage && window.XMLHttpRequest)
+                if (t(o))
+                    c(localStorage.font_css_cache);
+                else {
+                    var n = new XMLHttpRequest;
+                    n.open("GET", o, !0),
+                    e(n, "load", function() {
+                        4 === n.readyState && (c(n.responseText), localStorage.font_css_cache = n.responseText, localStorage.font_css_cache_file = o)
+                    }),
+                    n.send()
+                }
+            else {
+                var a = document.createElement("link");
+                a.href = o,
+                a.rel = "stylesheet",
+                a.type = "text/css",
+                document.getElementsByTagName("head")[0].appendChild(a),
+                document.cookie = "font_css_cache"
+            }
+        }
+        function c(e) {
+            var t = document.createElement("style");
+            t.innerHTML = e,
+            document.getElementsByTagName("head")[0].appendChild(t)
+        }
+        var o = "/fonts.css";
+        window.localStorage && localStorage.font_css_cache || document.cookie.indexOf("font_css_cache") > -1 ? n() : e(window, "load", n)
+    }();
+    </script>
+    <noscript>
+        <link rel="stylesheet" href="/fonts.css">
+    </noscript>
+    <link rel="stylesheet" media="all" href="/packs/css/application-0b9f30c1.css" data-turbolinks-track="reload"/>
+    <script src="/packs/js/application-a7ed1b0f4a7dca21e476.js" data-turbolinks-track="reload" async="async" defer="defer"></script>
+</head>
+
+<body class="page__body">
+    <header class="header z-20 left-0 w-full bg-white border-b">
+        <div class="container ml-auto mr-auto flex justify-between items-center px-4">
+            <a class="text-sm text-left" target="_blank" href="https://dope.su/faq">Помощь</a>
+            <a class="flex justify-center items-center h-12" href="/profile">
+                <img width="70" src="/packs/media/images/logo-6ab70b0bb6136767af6cb0da1ac93230.svg"/>
+            </a>
+            <a class="text-sm text-left" href="/settings">Аккаунт</a>
+        </div>
+    </header>
+    <div class="container ml-auto mr-auto min-h-screen">
+        <div class="h-full min-h-screen flex flex-col px-2 sm:px-4 pb-6">
+            <div class="pt-2" id="profile_form">
+                <div class="mb-4">
+                    <form enctype="multipart/form-data" action="/profile" accept-charset="UTF-8" method="post">
+                        <input type="hidden" name="_method" value="patch"/>
+                        <input type="hidden" name="authenticity_token" value="DNn09/13BeC/1QXNfyl5w8md4022T8yWR9CImqSKM9vgw8QFpPX30JnyregWdiix5d8cbKZfH4nVIH1mTIgA2A=="/>
+                        <label class="text-gray-700 relative cursor-pointer" for="profile_avatar">
+                            <input class="absolute left-0 top-0 opacity-0 w-1 h-1" onchange="this.form.submit()" type="file" name="profile[avatar]" id="profile_avatar"/>
+                            <img class="w-full h-64 object-cover" src="/uploads/profile/a786fbad-c900-4156-9481-fce17c949691/avatar/md-657849a2b39c7c46ee893f68bd90f3db.jpeg"/>
+                        </label>
+                    </form>
+                </div>
+                <div class="mb-8">
+                    <form action="/profile" accept-charset="UTF-8" method="post">
+                        <input type="hidden" name="_method" value="patch"/>
+                        <input type="hidden" name="authenticity_token" value="wdcfQpjrI5uE8tEGEFRzoi3B3f2Vza65up06VGiJrkYtzS+wwWnRq6LVeSN5CyLQAYMi3IXdfaYobc+ogIudRQ=="/>
+                        <div class="field mb-2 relative">
+                            <label class="text-sm block" for="profile_full_name">Имя и Фамилия</label>
+                            <input placeholder="" class="input w-full" required="required" minlength="2" type="text" value="{{user.first_name}}" name="profile[full_name]" id="profile_full_name"/>
+                        </div>
+                        <div class="field mb-2 relative" data-controller="counter">
+                            <div class="flex justify-between">
+                                <label class="text-sm block" for="profile_bio">Описание</label>
+                            </div>
+                            <textarea placeholder="" class="input w-full" rows="3" data-target="counter.input" maxlength="400" value="{{user_detail.description}}" name="profile[bio]" id="profile_bio"></textarea>
+                            <div class="flex justify-end">
+                                <em class="text-sm text-gray-600 leading-tight" data-target="counter.counter"></em>
+                            </div>
+                        </div>
+                        <div class="mb-5 relative">
+                            <div class="flex">
+                                <div class="w-5/6">
+                                    <div class="text-lg">Сделать аккаунт невидимым</div>
+                                    <div class="text-sm leading-tight">Если ползунок включен, ваш профиль будет виден только тем, с кем вы им поделитесть.</div>
+                                </div>
+                                <div class="w-1/6">
+                                    <div class="toggle-container pt-2">
+                                        <input name="profile[hide]" type="hidden" value="0"/>
+                                        <input class="toggle-button" type="checkbox" value="1" name="profile[hide]" id="profile_hide"/>
+                                        <label class="text" for="profile_hide"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% for sm in user_update.socialmedia_set.all %}
+                        <div class="field mb-2 flex border-t border-b border-gray-500">
+                            <div class="bg-gray-400 px-1 flex items-center justify-center border-r border-gray-500">
+                                <img alt="instagram" class="w-8 h-8 object-contain" src="dopeme/images/instagram-7b8982008ac76af9da15bcb5282cab1e.png"/>
+                            </div>
+                            <input placeholder="Никнейм Instagram" class="input w-full py-3 text-lg border-none rounded-none" type="text" value="{{sm.instagram}}" name="profile[instagram]" id="profile_instagram"/>
+                        </div>
+                        <div class="field mb-2 flex border-t border-b border-gray-500">
+                            <div class="bg-gray-400 px-1 flex items-center justify-center border-r border-gray-500">
+                                <img alt="tiktok" class="w-8 h-8 object-contain" src="/packs/media/images/tiktok-037c21559964c171b3e5919d76ecfa8f.png"/>
+                            </div>
+                            <input placeholder="Никнейм TikTok" class="input w-full py-3 text-lg border-none rounded-none" type="text" value="{{sm.tiktok}}" name="profile[tiktok]" id="profile_tiktok"/>
+                        </div>
+                        <div class="field mb-2 flex border-t border-b border-gray-500">
+                            <div class="bg-gray-400 px-1 flex items-center justify-center border-r border-gray-500">
+                                <img alt="facebook" class="w-8 h-8 object-contain" src="/packs/media/images/facebook-db6d304303a9e7f51d875f058ba3b414.png"/>
+                            </div>
+                            <input placeholder="Никнейм Facebook" class="input w-full py-3 text-lg border-none rounded-none" type="text" value="{{sm.facebook}}" name="profile[facebook]" id="profile_facebook"/>
+                        </div>
+                        {% endfor %}
+                        <div class="field mb-2 flex border-t border-b border-gray-500">
+                            <div class="bg-gray-400 px-1 flex items-center justify-center border-r border-gray-500">
+                                <img alt="telegram" class="w-8 h-8 object-contain" src="/packs/media/images/telegram-370b2b1bab31816bb36cab087bb65020.png"/>
+                            </div>
+                            <input placeholder="Никнейм Telegram" class="input w-full py-3 text-lg border-none rounded-none" type="text" value="{{user_update.telegram}}" name="profile[telegram]" id="profile_telegram"/>
+                        </div>
+                        <div class="field mb-2 flex border-t border-b border-gray-500">
+                            <div class="bg-gray-400 px-1 flex items-center justify-center border-r border-gray-500">
+                                <img alt="vk" class="w-8 h-8 object-contain" src="/packs/media/images/vk-fcddb874faa811e8b73a40962320f16c.png"/>
+                            </div>
+                            <input placeholder="Никнейм VK" class="input w-full py-3 text-lg border-none rounded-none" type="text" value="{{user_detail.vk}}" name="profile[vk]" id="profile_vk"/>
+                        </div>
+                        <div class="field mb-2 flex border-t border-b border-gray-500">
+                            <div class="bg-gray-400 px-1 flex items-center justify-center border-r border-gray-500">
+                                <img alt="snapchat" class="w-8 h-8 object-contain" src="/packs/media/images/snapchat-e06d1f974e628fe0d044f574c576efb4.png"/>
+                            </div>
+                            <input placeholder="Никнейм Snapchat" class="input w-full py-3 text-lg border-none rounded-none" type="text" value="" name="profile[snapchat]" id="profile_snapchat"/>
+                        </div>
+                        <div class="field mb-2 flex border-t border-b border-gray-500">
+                            <div class="bg-gray-400 px-1 flex items-center justify-center border-r border-gray-500">
+                                <img alt="twitter" class="w-8 h-8 object-contain" src="/packs/media/images/twitter-68ec04d4d79b563089fdcc09832496c6.png"/>
+                            </div>
+                            <input placeholder="Никнейм Twitter" class="input w-full py-3 text-lg border-none rounded-none" type="text" value="" name="profile[twitter]" id="profile_twitter"/>
+                        </div>
+                        <div class="field mb-2 flex border-t border-b border-gray-500">
+                            <div class="bg-gray-400 px-1 flex items-center justify-center border-r border-gray-500">
+                                <img alt="youtube" class="w-8 h-8 object-contain" src="/packs/media/images/youtube-22d146ef2e33614e49e847deb05eb894.png"/>
+                            </div>
+                            <input placeholder="Ссылка на YouTube" class="input w-full py-3 text-lg border-none rounded-none" type="text" value="" name="profile[youtube]" id="profile_youtube"/>
+                        </div>
+                        <div class="field mb-2 flex border-t border-b border-gray-500">
+                            <div class="bg-gray-400 px-1 flex items-center justify-center border-r border-gray-500">
+                                <img alt="spotify" class="w-8 h-8 object-contain" src="/packs/media/images/spotify-ccd2ffe93963b18bab7ebf66427722f5.png"/>
+                            </div>
+                            <input placeholder="Ссылка Spotify" class="input w-full py-3 text-lg border-none rounded-none" type="text" value="" name="profile[spotify]" id="profile_spotify"/>
+                        </div>
+                        <div class="field mb-2 flex border-t border-b border-gray-500">
+                            <div class="bg-gray-400 px-1 flex items-center justify-center border-r border-gray-500">
+                                <img alt="apple_music" class="w-8 h-8 object-contain" src="/packs/media/images/apple_music-6a3300aafb22ed477327d00962a461b5.png"/>
+                            </div>
+                            <input placeholder="Ссылка Apple Music" class="input w-full py-3 text-lg border-none rounded-none" type="text" value="" name="profile[apple_music]" id="profile_apple_music"/>
+                        </div>
+                        <div class="field mb-2 flex border-t border-b border-gray-500">
+                            <div class="bg-gray-400 px-1 flex items-center justify-center border-r border-gray-500">
+                                <img alt="whatsapp" class="w-8 h-8 object-contain" src="/packs/media/images/whatsapp-6ad2db38d04017ff928e9735a09dde8f.png"/>
+                            </div>
+                            <input placeholder="Номер WhatsApp, начиная c +7" class="input w-full py-3 text-lg border-none rounded-none" type="text" value="" name="profile[whatsapp]" id="profile_whatsapp"/>
+                        </div>
+                        <div class="field mb-2 flex border-t border-b border-gray-500">
+                            <div class="bg-gray-400 px-1 flex items-center justify-center border-r border-gray-500">
+                                <img alt="twitch" class="w-8 h-8 object-contain" src="/packs/media/images/twitch-9b8db5fa7127f6b92cf5fb094a262c65.png"/>
+                            </div>
+                            <input placeholder="Никнейм Twitch" class="input w-full py-3 text-lg border-none rounded-none" type="text" value="" name="profile[twitch]" id="profile_twitch"/>
+                        </div>
+                        <div class="field mb-2 flex border-t border-b border-gray-500">
+                            <div class="bg-gray-400 px-1 flex items-center justify-center border-r border-gray-500">
+                                <img alt="linkedin" class="w-8 h-8 object-contain" src="/packs/media/images/linkedin-a02349288a4b3c905f2f976d012d228f.png"/>
+                            </div>
+                            <input placeholder="Ссылка на LinkedIn" class="input w-full py-3 text-lg border-none rounded-none" type="text" value="" name="profile[linkedin]" id="profile_linkedin"/>
+                        </div>
+                        <div class="field mb-2 flex border-t border-b border-gray-500">
+                            <div class="bg-gray-400 px-1 flex items-center justify-center border-r border-gray-500">
+                                <img alt="phone" class="w-8 h-8 object-contain" src="/packs/media/images/phone-eec85b75361048f7ff7d629d734b23f8.png"/>
+                            </div>
+                            <input placeholder="Номер телефона с +7" class="input w-full py-3 text-lg border-none rounded-none" type="tel" value="" name="profile[phone]" id="profile_phone"/>
+                        </div>
+                        <div class="field mb-2 flex border-t border-b border-gray-500">
+                            <div class="bg-gray-400 px-1 flex items-center justify-center border-r border-gray-500">
+                                <img alt="email" class="w-8 h-8 object-contain" src="/packs/media/images/email-e1ae5485e8e4833bc9b415be5d0362fa.png"/>
+                            </div>
+                            <input placeholder="Email" class="input w-full py-3 text-lg border-none rounded-none" type="email" value="daanchooo@gmail.com" name="profile[email]" id="profile_email"/>
+                        </div>
+                        <div class="field mb-2 flex border-t border-b border-gray-500">
+                            <div class="bg-gray-400 px-1 flex items-center justify-center border-r border-gray-500">
+                                <img alt="website" class="w-8 h-8 object-contain" src="/packs/media/images/website-bde8e05fbd3882d5690e18a85d123dea.png"/>
+                            </div>
+                            <input placeholder="Ссылка на Website" class="input w-full py-3 text-lg border-none rounded-none" type="text" value="" name="profile[website]" id="profile_website"/>
+                        </div>
+                        <div class="w-full bg-white flex items-center justify-center py-3 fixed bottom-0 left-0">
+                            <div class="container px-2 sm:px-4">
+                                <input type="submit" name="commit" value="Сохранить" class="btn btn-primary bg-dark border-none py-1 w-full" data-disable-with="Сохранить"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
