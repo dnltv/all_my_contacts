@@ -8,29 +8,39 @@ from .forms import EditDopeUserModelForm
 
 
 # Create your views here.
+
 def index(request):
     """
     View Function for Home (Main) page.
     """
+    return render(
+        request,
+        'index.html'
+    )
+
+#def index(request):
+    #"""
+    #View Function for Home (Main) page.
+    #"""
     # Сколько пользователей зарегистрировано в dope на данный момент
-    num_dope_user = DopeUser.objects.all().count()
+    #num_dope_user = DopeUser.objects.all().count()
     # Сколько видимых профилей
-    num_visible_dope_user = DopeUser.objects.filter(status__exact='v').count()
+    #num_visible_dope_user = DopeUser.objects.filter(status__exact='v').count()
     # Сколько раз поделились контактами
     # num_share
 
-    num_visits = request.session.get('num_visits', 0)
-    request.session['num_visits'] = num_visits + 1
+    #num_visits = request.session.get('num_visits', 0)
+    #request.session['num_visits'] = num_visits + 1
 
     # Отрисовка HTML-шаблона index.html с данными внутри (переменная контекста)
-    return render(
-        request,
-        'index.html',
-        context={'num_dope_user': num_dope_user,
-                 'num_visible_dope_user': num_visible_dope_user,
-                 'num_visits': num_visits,
-                 }
-    )
+    #return render(
+        #request,
+        #'index.html',
+        #context={'num_dope_user': num_dope_user,
+                 #'num_visible_dope_user': num_visible_dope_user,
+                 #'num_visits': num_visits,
+                 #}
+    #)
 
 
 class DopeUsersListView(LoginRequiredMixin, generic.ListView):
