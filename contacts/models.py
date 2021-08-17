@@ -64,6 +64,8 @@ class DopeUser(models.Model):
 
     # Metadata
     class Meta:
+        verbose_name = 'Профиль'
+        verbose_name_plural = 'Профили'
         ordering = ['user']
 
     # Methods
@@ -105,8 +107,9 @@ class SocialMedia(models.Model):
     clubhouse = models.CharField(max_length=50, help_text='Профиль Clubhouse', null=True, blank=True)
 
     class Meta:
+        verbose_name = 'Социальная сеть'
+        verbose_name_plural = 'Социальные сети'
         ordering = ['user']
-        verbose_name_plural = 'Social Media'
         # permissions
 
     def __str__(self):
@@ -132,8 +135,9 @@ class Messengers(models.Model):
                                           null=True, blank=True)
 
     class Meta:
+        verbose_name = 'Мессенджер'
+        verbose_name_plural = 'Мессенджеры'
         ordering = ['user']
-        verbose_name_plural = 'Messengers'
 
     def __str__(self):
         return self.user.__str__()
@@ -151,8 +155,9 @@ class VideoCallServices(models.Model):
     discord = models.CharField(max_length=100, help_text='Профиль Discord', null=True, blank=True)
 
     class Meta:
+        verbose_name = 'Видеосвязь'
+        verbose_name_plural = 'Видеосвязь'
         ordering = ['user']
-        verbose_name_plural = 'Video Call Services'
 
     def __str__(self):
         return self.user.__str__()
@@ -168,8 +173,9 @@ class PersonalContacts(models.Model):
     site = models.CharField(max_length=100, help_text='Укажите адрес сайта', null=True, blank=True)
 
     class Meta:
+        verbose_name = 'Персональные контакты'
+        verbose_name_plural = 'Персональные контакты'
         ordering = ['user']
-        verbose_name_plural = 'Personal Contacts'
 
     def __str__(self):
         return self.user.__str__()
@@ -189,8 +195,9 @@ class MusicPlatforms(models.Model):
     vk_boom = models.CharField(max_length=50, help_text='Профиль VK BOOM', null=True, blank=True)
 
     class Meta:
+        verbose_name = 'Музыка'
+        verbose_name_plural = 'Музыка'
         ordering = ['user']
-        verbose_name_plural = 'Music Platforms'
 
     def __str__(self):
         return self.user.__str__()
@@ -205,8 +212,9 @@ class VideoHostings(models.Model):
     vimeo = models.CharField(max_length=50, help_text='Профиль Vimeo', null=True, blank=True)
 
     class Meta:
+        verbose_name = 'Видео Хостинг'
+        verbose_name_plural = 'Видео Хостинг'
         ordering = ['user']
-        verbose_name_plural = 'Video Hostings'
 
     def __str__(self):
         return self.user.__str__()
@@ -231,8 +239,9 @@ class Wallets(models.Model):
     qiwi = models.CharField(max_length=100, help_text='Укажите номер кошелька QIWI', null=True, blank=True)
 
     class Meta:
+        verbose_name = 'Кошелёк'
+        verbose_name_plural = 'Кошельки'
         ordering = ['user']
-        verbose_name_plural = 'Wallets'
 
     def __str__(self):
         return self.user.__str__()
@@ -252,8 +261,9 @@ class Portfolio(models.Model):
     github = models.CharField(max_length=100, help_text='Профиль GitHub', null=True, blank=True)
 
     class Meta:
+        verbose_name = 'Портфолио'
+        verbose_name_plural = 'Портфолио'
         ordering = ['user']
-        verbose_name_plural = 'Portfolio'
 
     def __str__(self):
         return self.user.__str__()
@@ -268,8 +278,9 @@ class Gaming(models.Model):
     steam = models.CharField(max_length=100, help_text='Профиль Steam', null=True, blank=True)
 
     class Meta:
+        verbose_name = 'Игры'
+        verbose_name_plural = 'Игры'
         ordering = ['user']
-        verbose_name_plural = 'Gaming'
 
     def __str__(self):
         return self.user.__str__()
@@ -286,8 +297,9 @@ class Maps(models.Model):
     two_gis_maps = models.CharField(name='2GIS', max_length=100, help_text='Введите координаты в 2ГИС', null=True, blank=True, )
 
     class Meta:
+        verbose_name = 'Карты'
+        verbose_name_plural = 'Карты'
         ordering = ['user']
-        verbose_name_plural = 'Maps'
 
     def __str__(self):
         return self.user.__str__()
@@ -302,8 +314,9 @@ class Other(models.Model):
     podcasts = models.CharField(max_length=50, help_text='Профиль Podcasts', null=True, blank=True)
 
     class Meta:
+        verbose_name = 'Другое'
+        verbose_name_plural = 'Другое'
         ordering = ['user']
-        verbose_name_plural = 'Other'
 
     def __str__(self):
         return self.user.__str__()
