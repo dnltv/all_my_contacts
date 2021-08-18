@@ -96,3 +96,10 @@ def profile(request):
         'contacts/profile.html',
 
     )
+
+def start(request):
+
+    return render(
+        request,
+        'start.html',
+    )
