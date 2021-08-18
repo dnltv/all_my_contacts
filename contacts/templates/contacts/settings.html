@@ -11,9 +11,10 @@
     <br>
     <form action="" method="post">
         {% csrf_token %}
-        <table>
-            {{ form }}
-        </table>
-        <input type="submit" value="Submit" />
+        {{ form.email }}
+        <br>
+        {{ form.first_name }}
+        <br><br>
+        <button type="submit" class="btn btn-success">Сохранить</button>
     </form>
 {% endblock %}
