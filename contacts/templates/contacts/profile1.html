@@ -1,0 +1,29 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}
+    <title>Profile {{customuser.first_name}}</title>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container ml-auto mr-auto min-h-screen">
+    <div class="h-full min-h-screen flex flex-col pt-6 px-4">
+        <h1 class="text-2xl text-center mb-4">Введите свой email и пароль</h1>
+
+        <form class="new_user" id="new_user" action="profile.html" accept-charset="UTF-8" method="post">
+            <input type="hidden" name="authenticity_token" value="S741ihzi88GIIx6x8MNBHWZ0gAGEDDPS7+13fguCJviP6BjCtRtw8xlvapwXOwqygaijQ2na44c8YoC4vps/tQ==">
+            <input autofocus="autofocus" autocomplete="username" class="input w-full mb-2" placeholder="Email" required="required" type="email" value="" name="user[email]" id="user_email">
+            <input autocomplete="current-password" class="input w-full mb-6" placeholder="Пароль" required="required" type="password" name="user[password]" id="user_password">
+            <input value="true" type="hidden" name="user[remember_me]" id="user_remember_me">
+            <button name="button" type="submit" class="btn btn-main w-full">Вход</button>
+        </form>
+
+        <div class="mt-5 text-center">
+            <div class="mb-2"></div>
+            <a href="https://dopeme.ru/password/new">Забыли пароль или не можете войти?</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

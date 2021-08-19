@@ -93,13 +93,22 @@ def profile(request):
 
     return render(
         request,
-        'contacts/profile.html',
+        'contacts/profile1.html',
 
     )
+
 
 def start(request):
 
     return render(
         request,
-        'start.html',
+        'contacts/start.html',
+    )
+
+
+def log(request):
+
+    return render(
+        request,
+        'contacts/log.html'
     )

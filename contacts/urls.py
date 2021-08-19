@@ -9,7 +9,8 @@ urlpatterns = [
     url(r'^profile/<slug>/edit/$', views.UpdateDopeUserView.as_view(), name='edit'),
     url(r'^profile/<slug>/settings/$', views.SettingAccount.as_view(), name='settings'),
     url(r'^profile/$', views.profile, name='profile'),
-    url(r'^start/$', views.start)
+    url(r'^start/$', views.start),
+    url(r'^log/$', views.log),
 
 ]
 
