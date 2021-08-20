@@ -64,7 +64,7 @@ class DopeUserDetailView(generic.DetailView):
 
 class UpdateDopeUserView(LoginRequiredMixin, generic.UpdateView):
     models = DopeUser
-    fields = ['last_name', 'date_of_birth', 'description', 'photo', 'status']
+    fields = ['first_name', 'last_name', 'date_of_birth', 'description', 'photo', 'status']
     context_object_name = 'user_update'
     template_name = 'contacts/edit.html'
 
