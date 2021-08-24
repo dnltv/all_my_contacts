@@ -49,6 +49,7 @@
 <body class="d-flex h-100 text-center text-white bg-dark">
 
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    {% block header %}
     <header class="mb-auto">
         <div>
             <h3 class="float-md-start mb-0">Dope</h3>
@@ -64,6 +65,7 @@
             </nav>
         </div>
     </header>
+    {% endblock %}
 
     <main class="px-3">
         {% block content %}{% endblock %}
