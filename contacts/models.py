@@ -4,6 +4,7 @@ from django.contrib.auth.models import AbstractUser
 from django.utils.translation import ugettext_lazy as _
 from .managers import CustomUserManager
 from autoslug import AutoSlugField
+#from transliterate import translit
 
 
 # Create your models here.
@@ -14,6 +15,9 @@ class CustomUser(AbstractUser):
     username = None
     email = models.EmailField(_('email address'), unique=True)
     first_name = models.CharField(_('first name'), max_length=20)
+    #reg_id = models.IntegerField(_('registration id'), unique=True)
+    #code =
+
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name']
@@ -45,6 +49,7 @@ class DopeUser(models.Model):
     # Fields
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, null=True, verbose_name=_('user'))
     first_name = models.CharField(_('first name'), max_length=20, help_text='Введите своё имя')
+    #transliterate_first_name = translit(first_name, 'uk')
     slug = AutoSlugField(populate_from='first_name')
     last_name = models.CharField(_('last name'), max_length=20, help_text='Введите свою фамилию', null=True, blank=True)
     date_of_birth = models.DateField(_('date of birth'), help_text='Введите дату своего рождения',

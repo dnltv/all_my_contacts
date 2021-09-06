@@ -14,7 +14,8 @@ class CustomUserChangeForm(UserChangeForm):
 
     class Meta:
         model = CustomUser
-        fields = ('email', 'first_name')
+        # add  'reg_id' and 'code'
+        fields = ('email', 'first_name',)
         widgets = {
             'email': EmailInput(attrs={
                 'class': 'form-control',
