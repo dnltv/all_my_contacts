@@ -1,4 +1,5 @@
 dopeme/config.py
+dopeme/contacts/hash.py
 .DS_Store
 # Django #
 *.log
