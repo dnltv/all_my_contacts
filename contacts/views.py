@@ -4,8 +4,7 @@ from django.urls import reverse
 from .models import DopeUser, CustomUser
 from .forms import CustomUserChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import EditDopeUserModelForm
-
+from .forms import EditDopeUserModelForm, DopeUserForm, UserFormset
 
 # Create your views here.
 
@@ -63,10 +62,12 @@ class DopeUserDetailView(generic.DetailView):
 
 
 class UpdateDopeUserView(LoginRequiredMixin, generic.UpdateView):
-    models = DopeUser
+    model = DopeUser
+    form = UserFormset
+    # ['first_name', 'last_name', 'date_of_birth', 'description', 'photo', 'status']
     fields = ['first_name', 'last_name', 'date_of_birth', 'description', 'photo', 'status']
-    context_object_name = 'user_update'
-    template_name = 'contacts/edit.html'
+    # context_object_name = 'user_update'
+    template_name = 'contacts/edit2.html'
 
     def get_object(self):
         return self.request.user.dopeuser
