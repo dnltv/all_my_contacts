@@ -1,10 +1,10 @@
 from django.views import generic
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse
 from .models import DopeUser, CustomUser
 from .forms import CustomUserChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import EditDopeUserModelForm, DopeUserForm, UserFormset
+from .forms import EditDopeUserModelForm, DopeUserForm, SocialMediaForm
 
 # Create your views here.
 
@@ -63,10 +63,9 @@ class DopeUserDetailView(generic.DetailView):
 
 class UpdateDopeUserView(LoginRequiredMixin, generic.UpdateView):
     model = DopeUser
-    form = UserFormset
-    # ['first_name', 'last_name', 'date_of_birth', 'description', 'photo', 'status']
+    form = EditDopeUserModelForm
     fields = ['first_name', 'last_name', 'date_of_birth', 'description', 'photo', 'status']
-    # context_object_name = 'user_update'
+    context_object_name = 'user_detail'
     template_name = 'contacts/edit2.html'
 
     def get_object(self):
@@ -74,6 +73,30 @@ class UpdateDopeUserView(LoginRequiredMixin, generic.UpdateView):
 
     #def get_absolute_url(self):
         #return reverse('edit', args=[self])
+
+
+def update(request):
+
+    if request.method == 'POST':
+        dope_user_form = DopeUserForm(request.POST)
+        social_media_form = SocialMediaForm(request.POST)
+
+        if dope_user_form.is_valid() and social_media_form.is_valid():
+            dope_user_form.save()
+            social_media_form.save()
+
+    else:
+        dope_user_form = DopeUserDetailView
+        social_media_form = SocialMediaForm
+
+    return render(
+        request,
+        'contacts/edit3.html',
+        context={
+            'dope_user_form': DopeUserForm,
+            'social_media_form': SocialMediaForm,
+        }
+    )
 
 
 class SettingAccount(LoginRequiredMixin, generic.UpdateView):

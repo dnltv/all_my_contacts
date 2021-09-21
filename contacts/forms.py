@@ -61,34 +61,15 @@ class DopeUserForm(forms.ModelForm):
 
     class Meta:
         model = DopeUser
-        exclude = ['user', 'first_name', 'slug']
-        #widgets = {
-            #'first_name': TextInput(attrs={
-                #'class': 'form-control',
-                #'placeholder': 'Введите фамилию',
-            #}),
-            #'last_name': TextInput(attrs={
-                #'class': 'form-control',
-                #'placeholder': 'Введите фамилию',
-            #}),
-            #'date_of_birth': DateInput(attrs={
-                #'class': 'form-control',
-                #'placeholder': 'Укажите дату рождения',
-            #}),
-            #'description': Textarea(attrs={
-                #'class': 'form-control',
-                #'placeholder': 'Описание',
-            #}),
-            #'photo': ImageField(),
-            #'status': ChoiceField(),
-        #}
+        exclude = ['user', 'slug']
 
 
 class SocialMediaForm(ModelForm):
 
     class Meta:
         model = SocialMedia
-        fields = '__all__'
+        exclude = ['user']
 
 
-UserFormset = formset_factory(DopeUserForm)
+
+#UserFormset = formset_factory(DopeUserForm)

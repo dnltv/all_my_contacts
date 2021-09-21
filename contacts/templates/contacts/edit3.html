@@ -26,9 +26,11 @@
 
 {% block content %}
 
-    <form method="post">
+    <form action="." method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ dope_user_form.as_p }}
+        {{ social_media_form.as_p }}
+        <button type="submit" class="btn btn-success">Сохранить</button>
     </form>
 
 
