@@ -2,6 +2,7 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import *
 from django.forms import ModelForm, EmailInput, TextInput, DateInput, Textarea, ImageField, ChoiceField
 from django import forms
+from django.forms.models import BaseInlineFormSet, inlineformset_factory
 from django.forms.formsets import formset_factory
 
 
@@ -71,5 +72,4 @@ class SocialMediaForm(ModelForm):
         exclude = ['user']
 
 
-
-#UserFormset = formset_factory(DopeUserForm)
+# UserFormset = formset_factory(DopeUserForm)

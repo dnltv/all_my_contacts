@@ -3,7 +3,7 @@ from . import views
 
 
 urlpatterns = [
-    # url(r'^$', views.index, name='index'),
+    url(r'^$', views.index, name='index'),
     url(r'^$', views.start, name='start'),
     url(r'^profiles/$', views.DopeUsersListView.as_view(), name='users'),
     url(r'^profile/(?P<slug>[-\w]+)/$', views.DopeUserDetailView.as_view(), name='user'),

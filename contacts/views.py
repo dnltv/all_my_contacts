@@ -93,8 +93,8 @@ def update(request):
         request,
         'contacts/edit3.html',
         context={
-            'dope_user_form': DopeUserForm,
-            'social_media_form': SocialMediaForm,
+            'dope_user_form': dope_user_form,
+            'social_media_form': social_media_form,
         }
     )
 
@@ -117,7 +117,7 @@ def profile(request):
 
     return render(
         request,
-        'contacts/profile1.html',
+        'contacts/loginpage.html',
 
     )
 
