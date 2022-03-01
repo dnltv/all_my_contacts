@@ -1,10 +1,11 @@
-from django.views import generic
-from django.shortcuts import render, redirect
-from django.urls import reverse
-from .models import DopeUser, CustomUser
-from .forms import CustomUserChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import EditDopeUserModelForm, DopeUserForm, SocialMediaForm
+from django.shortcuts import redirect, render
+from django.urls import reverse
+from django.views import generic
+
+from .forms import (CustomUserChangeForm, DopeUserForm, EditDopeUserModelForm,
+                    SocialMediaForm)
+from .models import CustomUser, DopeUser
 
 # Create your views here.
 
