@@ -28,8 +28,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'contacts.apps.ContactsConfig',
     'debug_toolbar',
+    'contacts.apps.ContactsConfig',
 ]
 
 AUTH_USER_MODEL = 'contacts.CustomUser'
